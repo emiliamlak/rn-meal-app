@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
+import MealItem from '../components/MealItem';
 import { CATEGORIES, MEALS } from '../data/dummy-data';
 
 const CategoryMealsScreen = props => {
     const renderMealItem = itemData => {
-    return (<View><Text>{itemData.item.title}</Text></View>);
+    return <MealItem title={itemData.item.title} onSelectMeal={() => {}} />;
     };
 
     const catId = props.navigation.getParam('categoryId');
