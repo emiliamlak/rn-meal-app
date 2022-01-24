@@ -5,18 +5,27 @@ import { CATEGORIES, MEALS } from '../data/dummy-data';
 
 const CategoryMealsScreen = props => {
     const renderMealItem = itemData => {
-    return <MealItem title={itemData.item.title} onSelectMeal={() => {}} />;
+        return <MealItem 
+        title={itemData.item.title}
+        image={itemData.item.imageUrl}
+        duration={itemData.item.duration}
+        complexity={itemData.item.complexity}
+        affordability={itemData.item.affordability}
+        onSelectMeal={() => { }} />;
     };
 
     const catId = props.navigation.getParam('categoryId');
 
-  const displayedMeals = MEALS.filter(
-      meal => meal.categoryIds.indexOf(catId) >= 0
-  );
+    const displayedMeals = MEALS.filter(
+        meal => meal.categoryIds.indexOf(catId) >= 0
+    );
 
     return (
         <View style={styles.screen}>
-        <FlatList data={displayedMeals} keyExtractor={(item, index) => item.id} renderItem={renderMealItem}/>
+            <FlatList data={displayedMeals}
+                keyExtractor={(item, index) => item.id}
+                renderItem={renderMealItem}
+                style={{ width: '100%' }} />
             <Button title="Go to Meal Detail!" onPress={() => {
                 props.navigation.navigate({ routeName: 'MealDetail' });
             }} />
