@@ -67,7 +67,8 @@ const tabScreenConfig = {
                 return (<Ionicons name='ios-star' size={25} color={tabInfo.tintColor} />
                 );
             },
-            tabBarColor: Colors.accentColor
+            tabBarColor: Colors.accentColor,
+            tabBarLabel: Platform.OS === 'android' ? <Text style={{ fontFamily: 'open-sans-bold' }}>Favourites</Text> : 'Favourites'
 
         }
     },
